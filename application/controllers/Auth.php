@@ -54,13 +54,9 @@ class Auth extends CI_Controller
             $this->session->set_userdata($newdata);
             redirect('admin/overview');
         } else {
-            $this->session->set_flashdata(
-                'Info',
-                '<div class="alert alert-danger" role="alert">
-                                                    Data berhasil di hapus!
-                                                   </div>'
-            );
-            $this->load->view('auth/login');;
+            // echo "login salah";
+            $_SESSION['error'] = "Username atau Passwor Salah";
+            redirect('auth');
         }
     }
 

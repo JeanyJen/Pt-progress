@@ -204,7 +204,7 @@
                                             <div class="form-group row">
                                                 <label for="penjualan" class="col-sm-5 col-form-label">Total Bayar </label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" name="terhutang" class="form-control" required='' autocomplete="off">
+                                                    <input type="text" name="totalBayar" readonly class="form-control" required='' autocomplete="off">
                                                 </div>
                                             </div>
                                         </div>
@@ -521,6 +521,16 @@
 
             }
         });
+    })
+    $('input[name="totalBayar"]').focus(function() {
+        var totalBayar = 0;
+        $('input[name="terhutang"]').each(function() {
+            console.log($(this).val())
+            totalBayar += $(this).val() * 1; //<==== a catch  in here !! read below
+        });
+        console.log(totalBayar)
+        $('#totalSo').text(totalBayar)
+        $(this).val(totalBayar)
     })
 </script>
 

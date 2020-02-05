@@ -24,15 +24,13 @@ class Hutang extends CI_Controller
         //deklarasi variabelnya dlu ya gaes
 
 
-        $query = $this->db->query("SELECT max(SUBSTRING(no_invoice_pemb,10, 3))+1 as newId from transaksi_pembayaran where SUBSTRING(no_invoice_penj,5,4)='" . date("ym") . "'");
+        $query = $this->db->query("SELECT ifnull(max(SUBSTRING(no_invoice_pemb,14, 3)),0)+1 as newId from transaksi_pembayaran where SUBSTRING(no_invoice_pemb,14,3)='" . date("ym") . "'");
 
         $id_media = $this->input->post('id_media2');
         $id_klien = $this->input->post('id_klien');
         $no_so = $this->input->post('no_so');
         $terhutang = $this->input->post('terhutang');
-        $no_invoice_pemb = 'Faktur'  . '/' . date("y") . date("m") . '/' . sprintf("%03d", $query->result()[0]->newId);
-
-
+        $no_invoice_pemb = 'INV' . '/BYR'  . '/' . date("y") . date("m") . '/' . sprintf("%03d", $query->result()[0]->newId);
 
         //sesuaikan dengan name yang ada di karyawan_tambah
         $data = array(
@@ -41,17 +39,10 @@ class Hutang extends CI_Controller
             'id_klien' => $id_klien, // ini ga mau muncul id kliennya 
             'no_so' => 0,
             'terhutang' => $terhutang,
-
-
         );
         $this->Hutang_model->simpan_data($data);
 
-        // foreach ($this->input->post('no_so') as $value) {
-        //     $dataUpdate = [
-        //         "no_invoice_penj" => $no_invoice_penj
-        //     ];
-        //     $this->So_model->update_data($dataUpdate, $value);
-        // }
+
         // kita load model Karyawan_model kemudian arahkan ke function simpan_data sambil ngirim $data
 
         $this->session->set_flashdata(

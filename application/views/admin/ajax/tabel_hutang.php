@@ -15,18 +15,18 @@ foreach ($data_hutang as $tampil) {
         <td> <?= $tampil->nama_klien ?></td>
         <td> <?= $tampil->mmk ?></td>
         <td> <?= $tampil->kol ?></td>
-        <!-- <td>
+        <td>
             <?php // $this->load->helper('rupiah_helper');
-            //echo rupiah($tampil->price) 
+            //echo rupiah($tsampil->price) 
             ?>
             <input type="text" name="terhutang" class="col-sm-5 col-form-label" placeholder="" required='' autocomplete="off">
-        </td> -->
-        <td>
-            <?php $this->load->helper('rupiah_helper');
-            echo rupiah($tampil->nett)
+        </td>
+        <!-- <td>
+            <?php // $this->load->helper('rupiah_helper');
+            //echo rupiah($tampil->nett)
             ?>
 
-        </td>
+        </!--> -->
 
     </tr>
 
@@ -39,9 +39,8 @@ foreach ($data_hutang as $tampil) {
 <input type="hidden" value="<?= (isset($total) ? $total : '') ?>" name="total">
 <tr>
     <td colspan="5" class="table-secondary"> Total </td>
-    <td class="table-secondary">
-        <?php $this->load->helper('rupiah_helper');
-        echo rupiah($total)   ?>
+    <td class="table-secondary" id="totalSo">
+
     </td>
 </tr>
 <script type="text/javascript">

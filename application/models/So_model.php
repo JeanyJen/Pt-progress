@@ -175,4 +175,10 @@ class So_model extends CI_Model
         $this->db->where('no_so', $no_so);
         $this->db->update('tabel_so', $data);
     }
+
+    public function update_data2($data, $no_so)
+    {
+        $this->db->where('no_so', $no_so);
+        $this->db->update('tabel_so', $data);
+    }
 }

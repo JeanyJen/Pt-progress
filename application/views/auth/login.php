@@ -1,7 +1,20 @@
 <?php $this->load->view('auth/partials/auth_header'); ?>
 <div class="limiter">
     <div class="container-login100" style="background-image: url('<?php echo base_url('assets/'); ?>images/progress-design.png');">
+
         <div class="wrap-login100">
+            <?php if (isset($_SESSION['error'])) { ?>
+                <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+                    <?= $_SESSION['error'] ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php
+                unset($_SESSION['error']);
+            }
+            ?>
+
 
             <form class="user" action="<?php echo site_url('auth/login') ?>" method="post">
                 <!-- <span class="login100-form-logo">
@@ -25,7 +38,8 @@
                 <!-- <div class="form-group">
                 </div> -->
 
-                <button type="submit" class="btn btn-primary btn-user btn-block" onclick="auth_id('username')">>
+                <!-- <button type="submit" class="btn btn-primary btn-user btn-block" onclick="auth_id('username')"> -->
+                <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                 </button>
             </form>
@@ -35,9 +49,7 @@
 <?php $this->load->view('auth/partials/auth_footer'); ?>
 
 <script type="text/javascript">
-    function auth_id(username) {
-        if (confirm("Username dan Password Salah ")) {
-            window.location.href = 'auth/login'
-        }
-    }
+    setTimeout(function() {
+        $('#alert').fadeOut('slow');
+    }, 3000);
 </script>
