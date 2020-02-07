@@ -28,6 +28,15 @@ class So extends CI_Controller
         $this->load->view('admin/transaksi/so_view', $data);
     }
 
+    public function detail()
+    {
+        $data['title'] = "ambil_so";
+        $this->load->model('So_model');
+        $id = $this->uri->segment(5);
+        $data["detail"] = $this->So_model->get_detail($id);
+        $this->load->view('admin/transaksi/so_detail', $data);
+    }
+
     public function simpan()
     {
 
@@ -125,14 +134,7 @@ class So extends CI_Controller
         $this->load->view('admin/transaksi/so_detail', $data);
     }
 
-    public function detail()
-    {
-        $data['title'] = "ambil_so";
-        $this->load->model('So_model');
-        $id = $this->uri->segment(5);
-        $data["detail"] = $this->So_model->get_detail($id);
-        $this->load->view('admin/transaksi/so_detail', $data);
-    }
+
 
     public function simpan_edit()
     {

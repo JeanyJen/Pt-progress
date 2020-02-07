@@ -6,8 +6,6 @@
     <!-- INI DALAH FILE CSS YANG DI BUAT DATATABLES BOOSTRAP -->
     <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> <!-- INI CSS BOOSTRAP 4-->
     <link type="text/css" src="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> <!-- INI DATA TABLES BOOSTRAP 4-->
-    <script src="development-bundle/jquery-1.6.2.js">
-    </script>
     <?php $this->load->view("admin/_partials/head.php") ?>
     <style>
         #livesearch {
@@ -48,29 +46,25 @@
                                         <table class="table table-striped table-bordered" id="tblPenjualan">
                                             <!--id ini untuk manggil jquery-->
                                             <thead>
-
+                                                <?php $no = 1 ?>
                                                 <tr align="center">
-                                                    <th width="2"> No </th>
-                                                    <th width="100"> No.invoice </th>
+                                                    <th> No.invoice </th>
+                                                    <th> Tanggal </th>
                                                     <th> Nama Media </th>
-                                                    <th width="200"> Total Terbayar </th>
-                                                    <th width="2"> Aksi </th>
+                                                    <th> Total Terhutang </th>
+                                                    <th> Aksi </th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php $no = 1 ?>
-                                                <?php foreach ($ambil_hutang as $tampil) { ?>
-                                                    <tr>
-                                                        <td> <?php echo $no++ ?> </td>
-                                                        <td> <?php echo $tampil->no_invoice_pemb ?> </td>
-                                                        <td> <?php echo $tampil->nama_media ?> </td>
-                                                        <td> <?php $this->load->helper('rupiah_helper');
-                                                                echo rupiah($tampil->terhutang)  ?>
-                                                        </td>
-                                                        <td><a class=" btn btn-info btn-sm " href="<?php echo site_url('admin/transaksi/Hutang/detail/') . $tampil->id_media ?>"><i class="fa fa-file-alt"></i></a></td>
-                                                    </tr>
-                                                <?php } ?>
+                                                <tr>
+                                                    <td> </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td> <a class="btn btn-info" href="#" data-toggle="modal" data-target=".modal-detail">Detail</a></td>
+                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -173,42 +167,55 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <table class="table table-striped" id="rowTable"> -->
-                                    <table class="table table-striped" id="tabelku">
-                                        <thead>
+                                    <table class="table table-striped">
+                                        <!-- <thead>
                                             <tr>
-                                                <th rowspan="2" class="align-middle">Inv Pembayaran </th>
-                                                <th rowspan="2" class="align-middle">Nama Klien </th>
-                                                <th colspan="2"> Size </th>
-                                                <th rowspan="2" class="align-middle"> Price </th>
-                                                <th rowspan="2" class="align-middle"> Terhutang </th>
-                                            </tr>
-                                            <tr>
-                                                <th> Mmk </th>
-                                                <th> Kol </th>
+                                                <th scope="col">Column</th>
+                                                <th scope="col">MMK</th>
+                                                <th scope="col">Price</th>
+                                                
+                                                <th scope="col">Disc</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- <tr class="TambahBaris"> -->
                                             <tr>
-                                                <td><input type="text" name="no_invoice_pemb" class="form-control" placeholder="" required='' autocomplete="off"></td>
-                                                <td><select class="form-control" name="id_klien">
-                                                        <?php foreach ($hutang_klien as $tampil) { ?>
-                                                            <option value="<?= $tampil->id_klien ?>"> <?= $tampil->nama_klien ?> </option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </td>
                                                 <td><input type="text" name="kol" class="form-control" placeholder="" required='' autocomplete="off"></td>
                                                 <td><input type="text" name="mmk" class="form-control" placeholder="" required='' autocomplete="off"></td>
                                                 <td><input type="text" name="price" class="form-control" placeholder="" required='' autocomplete="off"></td>
-                                                <td><input type="text" name="terhutang" class="form-control" placeholder="" required='' autocomplete="off" readonly></td>
+                                                
+                                                <td><input type="text" name="disc" class="form-control" placeholder="" required='' autocomplete="off"></td>
                                             </tr>
-                                        </tbody>
-                                        <!-- <input id="addRow" type="button" value="Tambah Baris (+)" />
-                                        <input id="deleteRow" type="button" value="Hapus Baris (-)" /> -->
-                                        <tfoot>
-                                            <td colspan="3"><input type="button" value="Tambah Baris" onclick="tambah_baris()" /></td>
-                                        </tfoot>
+                                        </tbody> -->
+                                        <div class="input-group">
+                                            <thead>
+                                                <tr>
+                                                    <th rowspan="2" class="align-middle">No</th>
+                                                    <th rowspan="2" class="align-middle">No.So</th>
+
+                                                    <th rowspan="2" class="align-middle">Nama Klien </th>
+                                                    <th colspan="2"> Size </th>
+                                                    <th rowspan="2" class="align-middle"> Terhutang </th>
+
+                                                </tr>
+                                                <tr>
+                                                    <th> Mmk </th>
+                                                    <th> Kol </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="DataHutang">
+                                                <?php $grandtotal = 0;
+                                                ?>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </div>
                                     </table>
                                     <div class="row">
                                         <div class="col-sm-3"> </div>
@@ -223,9 +230,23 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- <button type="submit" class="hide" id="button_simpan"></button> -->
-                                    <button type="submit" class="btn btn-primary btn-save" id="button_simpan">Save </button>
+                                    <!-- <div class="row">
+                                        <div class="col-sm-3">Proposed</div>
+                                        <div class="col-sm-3"> Approved </div>
+                                        <div class="col-sm-3"> Approved </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">Admin </div>
+                                        <div class="col-sm-3"> Pak Santo </div>
+                                        <div class="col-sm-3"> Pak Erwin </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                    </div> -->
+                                    <button type="submit" class="hide" id="button_simpan"></button>
+                                    <button type="button" class="btn btn-primary btn-save">Save </button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal" href="<?php echo site_url('admin/transaksi/hutang') ?>">Back</button>
                                 </div>
                             </form>
@@ -356,16 +377,33 @@
                                             <div class="form-group row">
                                                 <label for="basic-url" class="col-sm-5 col-form-label">Total Bayar </label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" required='' autocomplete="off">
+                                                    <input type="text" name="terhutang" class="form-control" required='' autocomplete="off">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- <div class="row">
+                                        <div class="col-sm-3">Proposed</div>
+                                        <div class="col-sm-3"> Approved </div>
+                                        <div class="col-sm-3"> Approved </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">Admin </div>
+                                        <div class="col-sm-3"> Pak Santo </div>
+                                        <div class="col-sm-3"> Pak Erwin </div>
+                                        <div class="col-sm-3"> -->
                                 </div>
                         </div>
 
                         <button type="button" class="btn btn-primary" onclick="$('#tambah_hutang').submit()">Simpan </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" href="<?php echo site_url('admin/transaksi/hutang') ?>">Back</button>
+
+                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" href="<?php // echo site_url('admin/transaksi/hutang') 
+                                                                                                        ?>">Back</button>
+                                    <button type="button" class="btn btn-primary btn-save">Save </button> -->
                     </div>
                 </div> <!-- AKHIR ROW-->
             </div> <!-- AKHIR CONTAINER-->
@@ -376,7 +414,71 @@
 </div>
 <!--  Akhir Modal Detail  -->
 
+<!-- Modal Search dalam modal-->
+<!-- <div class="modal fade ModalFaktur " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        
+        <div class="modal-content">
 
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLongTitle">Faktur Belum Lunas</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-2"> </th>
+                            <th scope="col">No.Po </th>
+                            <th scope="col">Tgl Invoice</th>
+                            <th scope="col">No Invoice</th>
+                            <th scope="col">Jatuh Tempo </th>
+                            <th scope="col">Terhutang</th>
+                            <th scope="col">Sisa Bayar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><input scope="row" type="checkbox" name="language[]" value=""></th>
+                            <td>Mark</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            </form>
+                        </tr>
+                        <tr>
+                            <th><input scope="row" type="checkbox" name="language[]" value=""></th>
+                            <td>Jacob</td>
+                            <td>Mark</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th><input scope="row" type="checkbox" name="language[]" value=""></th>s
+                            <td>Larry</td>
+                            <td>Mark</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Lanjut</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Akhir Modal Search dalam modal-->
 
 
 
@@ -391,6 +493,12 @@
 
     });
 
+    // $('input[name="sisa_bayar"]').focusin(function() {
+    //     if ($('input[name="uang_muka"]').val() != "") {
+    //         var sisaBayar = $('input[name="total"]').val() - $('input[name="uang_muka"]').val()
+    //         $('input[name="sisa_bayar"]').val(sisaBayar)
+    //     }
+    // })
 
     $('input[name="nett"]').focusin(function() {
         if ($('input[name="price"]').val() != "") {
@@ -445,54 +553,6 @@
         $('#totalSo').text(totalBayar)
         $(this).val(totalBayar)
     })
-
-    $('input[name="terhutang"]').focusin(function() {
-        if ($('input[name="price"]').val() != "") {
-            var sisaBayar = $('input[name="price"]').val() * $('input[name="kol"]').val() * $('input[name="mmk"]').val()
-            $('input[name="terhutang"]').val(sisaBayar)
-        }
-    })
-    //$ adalah jquery, # adalah id, . titik adalah nama class,  () adalah isi function yang mau yg mau dieksekusi 
-    // ready ini untuk pertama kali halaman dibuka, ready itu untuk panggil 
-    // prop itu sama kaya atr atau atribut
-
-
-    // $('#deleteRow').click(function() {
-    //     var tableID = "rowTable";
-    //     var table = document.getElementById(tableID);
-    //     var rowCount = table.rows.length;
-    //     console.log(rowCount);
-    //     if (rowCount != 1) {
-    //         rowCount = rowCount - 1;
-    //         table.deleteRow(rowCount);
-    //     }
-    // });
-
-    // $('#addRow').click(function() {
-    //     var tableID = "rowTable";
-    //     var table = document.getElementById(tableID);
-    //     var rowCount = table.rows.length;
-    //     var row = table.insertRow(rowCount);
-    //     var element1 = $('.TambahBaris');
-    //     // var element1 = "Baris Baru";
-    //     row.innerHTML = element1;
-    // });
-
-
-    // function tambah_baris() {
-    //     html = '<tr>' +
-    //         '<td><input type="text" name="no_invoice_pemb[]"></td>' +
-    //         '<td><input type="text" name="id_klien[<option value="<?php //echo $tampil->id_klien 
-                                                                        ?>"> <?php // echo $tampil->nama_klien 
-                                                                                ?> </option>]"></td>' +
-    //         '<td><input type="text" name="kol[]"></td>' +
-    //         '<td><input type="text" name="mmk[]"></td>' +
-    //         '<td><input type="text" name="price[]"></td>' +
-
-    //         '</tr>';
-    //     $('#tabelku tbody').append(html);
-    // }
 </script>
-
 
 </html>

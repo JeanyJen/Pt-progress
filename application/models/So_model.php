@@ -31,31 +31,6 @@ class So_model extends CI_Model
         $this->db->insert('tabel_so', $data);
     }
 
-    public function get_detail($id_klien)
-    {
-        $this->db->select(
-            'no_so,
-            tabel_klien.id_klien, 
-            tabel_klien.nama_klien, 
-            tabel_media.id_media, 
-            tabel_media.nama_media,
-            disc, 
-            kol,
-            mmk,
-            price,
-            gross,
-            nett,
-            tabel_so.status'
-        );
-        $this->db->from('tabel_so');
-        $this->db->join('tabel_klien', 'tabel_klien.id_klien=tabel_so.id_klien');
-        $this->db->join('tabel_media', 'tabel_media.id_media=tabel_so.id_media');
-        $this->db->where('tabel_klien.id_klien', $id_klien);
-        $this->db->group_by("tabel_klien.id_klien, tabel_so.no_so");
-        $query = $this->db->get('');
-        return $query->result();
-        // return $this->db->get('tabel_so')->result(); bisa juga pakai satu ini 
-    }
 
     public function get_detail_cek($id_klien)
     {
@@ -131,6 +106,32 @@ class So_model extends CI_Model
     //     return $query->result();
     //     //INTINYA KITA FILTER DATA PADA TABLE tabel_media DIMANA ID_media =$ID
     // }
+
+    public function get_detail($id_klien)
+    {
+        $this->db->select(
+            'no_so,
+            tabel_klien.id_klien, 
+            tabel_klien.nama_klien, 
+            tabel_media.id_media, 
+            tabel_media.nama_media,
+            disc, 
+            kol,
+            mmk,
+            price,
+            gross,
+            nett,
+            tabel_so.status'
+        );
+        $this->db->from('tabel_so');
+        $this->db->join('tabel_klien', 'tabel_klien.id_klien=tabel_so.id_klien');
+        $this->db->join('tabel_media', 'tabel_media.id_media=tabel_so.id_media');
+        $this->db->where('tabel_klien.id_klien', $id_klien);
+        $this->db->group_by("tabel_klien.id_klien, tabel_so.no_so");
+        $query = $this->db->get('');
+        return $query->result();
+        // return $this->db->get('tabel_so')->result(); bisa juga pakai satu ini 
+    }
 
     public function ambil_data_edit($id)
     {

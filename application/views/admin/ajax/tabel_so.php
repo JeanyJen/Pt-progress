@@ -42,6 +42,7 @@ foreach ($data_so as $tampil) {
 <input type="hidden" value="<?= (isset($no_so) ? $no_so : '') ?>" name="id_klien">
 <input type="hidden" value="<?= (isset($id_media) ? $id_media : '') ?>" name="id_media">
 <input type="hidden" value="<?= (isset($total) ? $total : '') ?>" name="total">
+
 <tr>
     <td colspan="8" class="table-secondary"> Total </td>
     <td class="table-secondary">
