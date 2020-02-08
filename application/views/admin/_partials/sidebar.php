@@ -45,7 +45,7 @@
             <span>Laporan</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/laporan/penjualan') ?>">Laporan Penjualan</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/laporan/Lap_penjualan') ?>">Laporan Penjualan</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/laporan/pembayaran') ?>">Laporan Pembayaran</a>
         </div>
     </li>

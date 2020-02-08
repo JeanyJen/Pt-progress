@@ -223,9 +223,10 @@
                             </div>
                         </div>
                     </div>
-                    <input class="btn btn-primary" type="button" value="Simpan">
-                    <input class="btn btn-primary" type="submit" value="Batal">
+                    <input class="btn btn-primary" type="button" value="Edit">
                     <input class="btn btn-primary" type="submit" value="pelunasan" id="lunas">
+                    <input class="btn btn-primary" type="submit" value="Kembali">
+
 
                 </div>
                 <!-- /.container-fluid -->

@@ -122,6 +122,7 @@
                             <!-- JANGAN LUPA TAMBAHKAN INPUT HIDDEN UNTUK  id_media | ini fungsinya untuk memberi tahu kedatabase nantinya id mana yang akan di update-->
                             <input type="text" name="no_invoice_pemb" hidden value="<?php echo $data_edit->no_invoice_pemb ?>">
                             <input type="text" name="id_media" hidden value="<?php echo $data_edit->id_media ?>">
+                            <input type="text" name="id_klien" hidden value="<?php echo $data_edit->id_klien ?>">
 
                             <label for="basic-url">No. Inv</label>
                             <div class="input-group mb-3">

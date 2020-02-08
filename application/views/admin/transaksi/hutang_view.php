@@ -201,7 +201,7 @@
                                                 <td><input type="text" name="kol" class="form-control" placeholder="" required='' autocomplete="off"></td>
                                                 <td><input type="text" name="mmk" class="form-control" placeholder="" required='' autocomplete="off"></td>
                                                 <td><input type="text" name="price" class="form-control" placeholder="" required='' autocomplete="off"></td>
-                                                <td><input type="text" name="terhutang" class="form-control" placeholder="" required='' autocomplete="off" readonly></td>
+                                                <td><input type="text" name="terhutang" class="form-control terhutang" placeholder="" required='' autocomplete="off" readonly></td>
                                             </tr>
                                         </tbody>
                                         <!-- <input id="addRow" type="button" value="Tambah Baris (+)" />
@@ -446,52 +446,15 @@
         $(this).val(totalBayar)
     })
 
-    $('input[name="terhutang"]').focusin(function() {
+    $('.terhutang').focusin(function() {
         if ($('input[name="price"]').val() != "") {
             var sisaBayar = $('input[name="price"]').val() * $('input[name="kol"]').val() * $('input[name="mmk"]').val()
-            $('input[name="terhutang"]').val(sisaBayar)
+            $(this).val(sisaBayar)
         }
     })
     //$ adalah jquery, # adalah id, . titik adalah nama class,  () adalah isi function yang mau yg mau dieksekusi 
     // ready ini untuk pertama kali halaman dibuka, ready itu untuk panggil 
     // prop itu sama kaya atr atau atribut
-
-
-    // $('#deleteRow').click(function() {
-    //     var tableID = "rowTable";
-    //     var table = document.getElementById(tableID);
-    //     var rowCount = table.rows.length;
-    //     console.log(rowCount);
-    //     if (rowCount != 1) {
-    //         rowCount = rowCount - 1;
-    //         table.deleteRow(rowCount);
-    //     }
-    // });
-
-    // $('#addRow').click(function() {
-    //     var tableID = "rowTable";
-    //     var table = document.getElementById(tableID);
-    //     var rowCount = table.rows.length;
-    //     var row = table.insertRow(rowCount);
-    //     var element1 = $('.TambahBaris');
-    //     // var element1 = "Baris Baru";
-    //     row.innerHTML = element1;
-    // });
-
-
-    // function tambah_baris() {
-    //     html = '<tr>' +
-    //         '<td><input type="text" name="no_invoice_pemb[]"></td>' +
-    //         '<td><input type="text" name="id_klien[<option value="<?php //echo $tampil->id_klien 
-                                                                        ?>"> <?php // echo $tampil->nama_klien 
-                                                                                ?> </option>]"></td>' +
-    //         '<td><input type="text" name="kol[]"></td>' +
-    //         '<td><input type="text" name="mmk[]"></td>' +
-    //         '<td><input type="text" name="price[]"></td>' +
-
-    //         '</tr>';
-    //     $('#tabelku tbody').append(html);
-    // }
 </script>
 
 

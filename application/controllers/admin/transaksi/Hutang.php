@@ -86,7 +86,7 @@ class Hutang extends CI_Controller
     {
         $no_invoice_pemb = $this->input->post('no_invoice_pemb');
         $id_klien = $this->input->post('id_klien');
-        $id_media = $this->input->post('id_media2');
+        $id_media = $this->input->post('id_media');
         $kol = $this->input->post('kol');
         $mmk = $this->input->post('mmk');
         $price = $this->input->post('price');
