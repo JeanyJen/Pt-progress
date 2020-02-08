@@ -28,44 +28,36 @@
                                 <div class="card">
                                     <div class="card header">
                                         <!-- HEADER TABLE -->
-                                        <h4 align="center"><strong>Laporan Penjualan </strong></h4>
+                                        <h4 align="center"><strong>Laporan Pembayaran </strong></h4>
                                     </div>
 
                                     <div class="card-body">
-                                        <!-- <form method="post" id="form1" action="<?php ?>">
-                                            <div class="form-body">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-1"> Tanggal</label>
-                                                    <input name="tgl-awal" type="date" style="width:auto;">
-                                                    <label>s/d</label>
-                                                    <input name="tgl-akhir" type="date" style="width:auto;">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-1"> </label>
-                                                    <button class="bn btn-primary" type="submit" type="button"> <i class=glyphicon glyphicon-refresh></i> View Date Laporan </button>
-                                                </div>
-                                            </div>
-                                        </form> -->
+
+                                        <!-- TABEL UNTUK MENAMPILKAN DATA ADA-->
                                         <table class="table table-striped table-bordered" id="search-lap">
                                             <thead>
                                                 <tr align="center">
-                                                    <th> No.invoice </th>
-                                                    <th> Tanggal </th>
-                                                    <th> Dipesan Oleh </th>
-                                                    <th> Total Nett </th>
+                                                    <th> No </th>
+                                                    <!-- <th> Tanggal Inv </th> -->
+                                                    <th> No.Invoice </th>
+                                                    <th> Nama Media </th>
+                                                    <th> Jumlah Bayar </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php $no = 1 ?>
-                                                <?php foreach ($laporan_penjualan as $tampil) { ?>
+                                                <?php foreach ($ambil_laphutang as $tampil) { ?>
 
                                                     <tr>
-                                                        <td> <?php echo $tampil->no_invoice_penj ?></td>
-                                                        <td> <?php echo $tampil->tgl_invoice_penj ?></td>
-                                                        <td> <?php echo $tampil->nama_klien ?></td>
+                                                        <td> <?php echo $no++ ?> </td>
+                                                        <!-- <td> <?php // echo $tampil->tanggal_inv_pemb 
+                                                                    ?> </td> -->
+                                                        <td> <?php echo $tampil->no_invoice_pemb ?> </td>
+                                                        <td> <?php echo $tampil->nama_media ?> </td>
                                                         <td> <?php $this->load->helper('rupiah_helper');
-                                                                echo rupiah($tampil->nett) ?>
+                                                                echo rupiah($tampil->terhutang)  ?>
                                                         </td>
+                                                        <!-- <td><a class=" btn btn-info btn-sm " href="<?php echo site_url('admin/transaksi/Hutang/detail/') . $tampil->id_media ?>"><i class="fa fa-file-alt"></i></a></td> -->
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -100,7 +92,6 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> <!-- INI ADALAH JQUERY DATATABLES-->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> <!-- INI ADALAH SCRIPT DATATABLES BOOSTRAP-->
 </footer>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#search-lap').DataTable(); // gunanya untuk mencari data tabel yang ada pada modal

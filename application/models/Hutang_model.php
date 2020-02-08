@@ -29,6 +29,7 @@ class Hutang_model extends CI_Model
     {
         $this->db->select(
             'no_invoice_pemb,
+            tanggal_inv_pemb,
             tabel_media.id_media, 
             tabel_media.nama_media, 
         (sum(mmk * kol* price)) as terhutang'

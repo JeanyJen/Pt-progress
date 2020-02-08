@@ -51,6 +51,7 @@
 
                                                 <tr align="center">
                                                     <th width="2"> No </th>
+                                                    <!-- <th width="2"> Tanggal.Inv </th> -->
                                                     <th width="100"> No.invoice </th>
                                                     <th> Nama Media </th>
                                                     <th width="200"> Total Terbayar </th>
@@ -63,6 +64,8 @@
                                                 <?php foreach ($ambil_hutang as $tampil) { ?>
                                                     <tr>
                                                         <td> <?php echo $no++ ?> </td>
+                                                        <!-- <td> <?php // echo $tampil->tanggal_inv_pemb 
+                                                                    ?> </td> -->
                                                         <td> <?php echo $tampil->no_invoice_pemb ?> </td>
                                                         <td> <?php echo $tampil->nama_media ?> </td>
                                                         <td> <?php $this->load->helper('rupiah_helper');
@@ -206,11 +209,11 @@
                                         </tbody>
                                         <!-- <input id="addRow" type="button" value="Tambah Baris (+)" />
                                         <input id="deleteRow" type="button" value="Hapus Baris (-)" /> -->
-                                        <tfoot>
+                                        <!-- <tfoot>
                                             <td colspan="3"><input type="button" value="Tambah Baris" onclick="tambah_baris()" /></td>
-                                        </tfoot>
+                                        </!-->
                                     </table>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-sm-3"> </div>
                                         <div class="col-sm-3"> </div>
                                         <div class="col-sm-3"> </div>
@@ -222,7 +225,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <!-- <button type="submit" class="hide" id="button_simpan"></button> -->
                                     <button type="submit" class="btn btn-primary btn-save" id="button_simpan">Save </button>
@@ -319,32 +322,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>Otto</td>
-                                                </tr>
-                                                <tr class="table-active">
-                                                    <th scope="row" colspan="3"> Total </th>
-                                                    <td>Otto</td>
-                                                    <td>Otto</td>
-                                                </tr>
+
                                             </tbody>
                                         </div>
                                     </table>

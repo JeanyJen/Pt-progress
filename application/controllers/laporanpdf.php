@@ -10,30 +10,82 @@ class Laporanpdf extends CI_Controller
 
     function index()
     {
-        $pdf = new FPDF('l', 'mm', 'A5');
-        // // membuat halaman baru
-        // $pdf->AddPage();
-        // // setting jenis font yang akan digunakan
-        // $pdf->SetFont('Arial', 'B', 16);
-        // // mencetak string 
-        // $pdf->Cell(190, 7, 'SEKOLAH MENENGAH KEJURUSAN NEEGRI 2 LANGSA', 0, 1, 'C');
-        // $pdf->SetFont('Arial', 'B', 12);
-        // $pdf->Cell(190, 7, 'DAFTAR SISWA KELAS IX JURUSAN REKAYASA PERANGKAT LUNAK', 0, 1, 'C');
-        // // Memberikan space kebawah agar tidak terlalu rapat
-        // $pdf->Cell(10, 7, '', 0, 1);
-        // $pdf->SetFont('Arial', 'B', 10);
-        // $pdf->Cell(20, 6, 'NIM', 1, 0);
-        // $pdf->Cell(85, 6, 'NAMA MAHASISWA', 1, 0);
-        // $pdf->Cell(27, 6, 'NO HP', 1, 0);
-        // $pdf->Cell(25, 6, 'TANGGAL LHR', 1, 1);
-        // $pdf->SetFont('Arial', '', 10);
-        // $mahasiswa = $this->db->get('mahasiswa')->result();
-        // foreach ($mahasiswa as $row) {
-        //     $pdf->Cell(20, 6, $row->nim, 1, 0);
-        //     $pdf->Cell(85, 6, $row->nama_lengkap, 1, 0);
-        //     $pdf->Cell(27, 6, $row->no_hp, 1, 0);
-        //     $pdf->Cell(25, 6, $row->tanggal_lahir, 1, 1);
-        // }
+    }
+    // http://localhost/pt-progress/index.php/laporanpdf/print_lap_penj
+
+    function print_lap_penj()
+    {
+        $pdf = new FPDF('l', 'mm', 'A4');
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial', 'B', 16);
+        // mencetak string 
+
+        $pdf->Cell(190, 7, 'PT Progress Advertising', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(190, 7, 'JL.Tanah Seratus RT.001/001 No.23, Kel.Sudimara Jaya, Kec.Ciledug', 0, 1, 'C');
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(7, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(70, 6, 'Tanggal Invoice', 1, 0);
+        $pdf->Cell(25, 6, 'No.Inv', 1, 0);
+        $pdf->Cell(27, 6, 'Nama Klien', 1, 0);
+        $pdf->Cell(25, 6, 'Marketing', 1, 0);
+        $pdf->Cell(25, 6, 'Nama Media', 1, 0);
+        $pdf->Cell(25, 6, 'Sisa Bayar', 1, 0);
+        $pdf->Cell(25, 6, 'Total', 1, 1);
+        $pdf->SetFont('Arial', '', 10);
+        $laporan_penjualan = $this->db->get('transaksi_pemesanan')->result();
+        foreach ($laporan_penjualan as $row) {
+
+            $pdf->Cell(70, 6, $row->tgl_invoice_penj, 1, 0);
+            $pdf->Cell(25, 6, $row->no_invoice_penj, 1, 0);
+            $pdf->Cell(27, 6, $row->id_klien, 1, 0);
+            $pdf->Cell(25, 6, $row->nip_karyawan, 1, 0);
+            $pdf->Cell(25, 6, $row->id_media, 1, 0);
+            $pdf->Cell(25, 6, $row->sisa_bayar, 1, 0);
+            $pdf->Cell(25, 6, $row->bayar, 1, 1);
+        }
+        $pdf->Output();
+    }
+
+    function print_lap_pemb()
+    {
+        $pdf = new FPDF('l', 'mm', 'A4');
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial', 'B', 16);
+        // mencetak string 
+
+        $pdf->Cell(190, 7, 'PT Progress Advertising', 0, 1, 'C');
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(190, 7, 'JL.Tanah Seratus RT.001/001 No.23, Kel.Sudimara Jaya, Kec.Ciledug', 0, 1, 'C');
+
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(7, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(50, 6, 'Tanggal Invoice', 1, 0);
+        $pdf->Cell(25, 6, 'No.Inv', 1, 0);
+        $pdf->Cell(27, 6, 'Nama Klien', 1, 0);
+        $pdf->Cell(25, 6, 'Marketing', 1, 0);
+        $pdf->Cell(25, 6, 'Nama Media', 1, 0);
+        $pdf->Cell(25, 6, 'Sisa Bayar', 1, 0);
+        $pdf->Cell(25, 6, 'Total', 1, 1);
+        $pdf->SetFont('Arial', '', 10);
+        $laporan_penjualan = $this->db->get('transaksi_pemesanan')->result();
+        foreach ($laporan_penjualan as $row) {
+
+            $pdf->Cell(50, 6, $row->tgl_invoice_penj, 1, 0);
+            $pdf->Cell(25, 6, $row->no_invoice_penj, 1, 0);
+            $pdf->Cell(27, 6, $row->id_klien, 1, 0);
+            $pdf->Cell(25, 6, $row->nip_karyawan, 1, 0);
+            $pdf->Cell(25, 6, $row->id_media, 1, 0);
+            $pdf->Cell(25, 6, $row->sisa_bayar, 1, 0);
+            $pdf->Cell(25, 6, $row->bayar, 1, 1);
+        }
         $pdf->Output();
     }
 }
