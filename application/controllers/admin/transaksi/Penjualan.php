@@ -31,6 +31,7 @@ class Penjualan extends CI_Controller
         $sisa_bayar = $this->input->post('sisa_bayar');
         $metode_pembayaran = $this->input->post('metode_pembayaran');
         $uang_muka = $this->input->post('uang_muka');
+        $bayar = $this->input->post('bayar');
         $no_invoice_penj = 'Inv' . '/' . date("y") . date("m") . '/' . sprintf("%03d", $query->result()[0]->newId);
 
 
@@ -43,7 +44,8 @@ class Penjualan extends CI_Controller
             'id_media' => $id_media,
             'sisa_bayar' => $sisa_bayar,
             'metode_pemb' => $metode_pembayaran,
-            'uang_muka' => $uang_muka
+            'uang_muka' => $uang_muka,
+            'bayar' => $bayar
         );
         $this->Penjualan_model->simpan_data($data);
 

@@ -79,7 +79,7 @@
                                                         </td>
 
                                                         <td>
-                                                            <a class="btn btn-info" href=" admin/transaksi/penjualan_detail">Cetak</a>
+                                                            <a class="btn btn-info" href=" <?php echo site_url('admin/transaksi/trans_report') ?>">Cetak</a>
                                                             <a class=" btn btn-info btn-sm " href="<?php echo site_url('admin/transaksi/penjualan/detail/') . $tampil->id_klien ?>"><i class="fa fa-file-alt"></i></a>
                                                         </td>
                                                     </tr>
@@ -287,6 +287,20 @@
                                                 <label for="penjualan" class="col-sm-5 col-form-label">Sisa Bayar</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control" name="sisa_bayar" readonly placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3"> </div>
+                                        <div class="col-sm-3"> </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group row">
+                                                <label for="penjualan" class="col-sm-5 col-form-label">Bayar</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" name="bayar" placeholder="">
                                                 </div>
                                             </div>
                                         </div>

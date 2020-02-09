@@ -29,23 +29,20 @@ class Laporanpdf extends CI_Controller
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(7, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(70, 6, 'Tanggal Invoice', 1, 0);
         $pdf->Cell(25, 6, 'No.Inv', 1, 0);
+        $pdf->Cell(70, 6, 'Tanggal Invoice', 1, 0);
         $pdf->Cell(27, 6, 'Nama Klien', 1, 0);
         $pdf->Cell(25, 6, 'Marketing', 1, 0);
-        $pdf->Cell(25, 6, 'Nama Media', 1, 0);
-        $pdf->Cell(25, 6, 'Sisa Bayar', 1, 0);
         $pdf->Cell(25, 6, 'Total', 1, 1);
         $pdf->SetFont('Arial', '', 10);
         $laporan_penjualan = $this->db->get('transaksi_pemesanan')->result();
         foreach ($laporan_penjualan as $row) {
 
-            $pdf->Cell(70, 6, $row->tgl_invoice_penj, 1, 0);
             $pdf->Cell(25, 6, $row->no_invoice_penj, 1, 0);
+            $pdf->Cell(70, 6, $row->tgl_invoice_penj, 1, 0);
             $pdf->Cell(27, 6, $row->id_klien, 1, 0);
+
             $pdf->Cell(25, 6, $row->nip_karyawan, 1, 0);
-            $pdf->Cell(25, 6, $row->id_media, 1, 0);
-            $pdf->Cell(25, 6, $row->sisa_bayar, 1, 0);
             $pdf->Cell(25, 6, $row->bayar, 1, 1);
         }
         $pdf->Output();
@@ -67,21 +64,17 @@ class Laporanpdf extends CI_Controller
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(7, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->Cell(50, 6, 'Tanggal Invoice', 1, 0);
         $pdf->Cell(25, 6, 'No.Inv', 1, 0);
-        $pdf->Cell(27, 6, 'Nama Klien', 1, 0);
-        $pdf->Cell(25, 6, 'Marketing', 1, 0);
+        $pdf->Cell(50, 6, 'Tanggal Invoice', 1, 0);
         $pdf->Cell(25, 6, 'Nama Media', 1, 0);
         $pdf->Cell(25, 6, 'Sisa Bayar', 1, 0);
-        $pdf->Cell(25, 6, 'Total', 1, 1);
+        $pdf->Cell(25, 6, 'Total Bayar', 1, 1);
         $pdf->SetFont('Arial', '', 10);
         $laporan_penjualan = $this->db->get('transaksi_pemesanan')->result();
         foreach ($laporan_penjualan as $row) {
 
-            $pdf->Cell(50, 6, $row->tgl_invoice_penj, 1, 0);
             $pdf->Cell(25, 6, $row->no_invoice_penj, 1, 0);
-            $pdf->Cell(27, 6, $row->id_klien, 1, 0);
-            $pdf->Cell(25, 6, $row->nip_karyawan, 1, 0);
+            $pdf->Cell(50, 6, $row->tgl_invoice_penj, 1, 0);
             $pdf->Cell(25, 6, $row->id_media, 1, 0);
             $pdf->Cell(25, 6, $row->sisa_bayar, 1, 0);
             $pdf->Cell(25, 6, $row->bayar, 1, 1);

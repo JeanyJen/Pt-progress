@@ -32,6 +32,7 @@
                                     </div>
 
                                     <div class="card-body">
+                                        <a class="btn btn-primary btn-sm" href="<?php echo base_url('laporanpdf/print_lap_penj') ?>"> print </a>
                                         <!-- <form method="post" id="form1" action="<?php ?>">
                                             <div class="form-body">
                                                 <div class="form-group">

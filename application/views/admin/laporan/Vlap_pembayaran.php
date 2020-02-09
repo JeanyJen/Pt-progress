@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="card-body">
-
+                                        <a class="btn btn-primary btn-sm" href="<?php echo base_url('laporanpdf/print_lap_pemb') ?>"> print </a>
                                         <!-- TABEL UNTUK MENAMPILKAN DATA ADA-->
                                         <table class="table table-striped table-bordered" id="search-lap">
                                             <thead>
