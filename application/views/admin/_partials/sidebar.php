@@ -17,7 +17,9 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="<?php echo site_url('admin/media') ?>">File Media</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/klien') ?>"> File Client</a>
-            <?php if ($this->session->role_id != 'marketing') { ?> <a class="dropdown-item" href="<?php echo site_url('admin/karyawan') ?>"> File Employee</a><?php } ?>
+            <?php if ($this->session->role_id != 'marketing') { ?>
+                <a class="dropdown-item" href="<?php echo site_url('admin/karyawan') ?>"> File Employee</a>
+            <?php } ?>
             <!-- session untuk memberikan hak akses, != artinya tidak sama dengan role_id="5" tidak mendapatkan akses kepada file employee -->
         </div>
     </li>
@@ -29,9 +31,12 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="<?php echo site_url('admin/transaksi/So') ?>">Pembuatan So </a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/transaksi/penjualan') ?>">Pemesanan Iklan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/transaksi/hutang') ?>">Pembayaran Kemedia</a>
-
+            <?php if ($this->session->role_id != 'marketing') { ?>
+                <a class="dropdown-item" href="<?php echo site_url('admin/transaksi/penjualan') ?>">Pemesanan Iklan</a>
+            <?php } ?>
+            <?php if ($this->session->role_id != 'marketing') { ?>
+                <a class="dropdown-item" href="<?php echo site_url('admin/transaksi/hutang') ?>">Pembayaran Kemedia</a>
+            <?php } ?>
         </div>
     </li>
 
@@ -43,7 +48,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="<?php echo site_url('admin/laporan/Lap_penjualan') ?>">Laporan Penjualan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/laporan/Lap_pembayaran') ?>">Laporan Pembayaran</a>
+            <?php if ($this->session->role_id != 'marketing') { ?>
+                <a class="dropdown-item" href="<?php echo site_url('admin/laporan/Lap_pembayaran') ?>">Laporan Pembayaran</a>
+            <?php } ?>
         </div>
     </li>
 

@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -53,4 +52,70 @@ class Laporan_model extends CI_Model
         //     $query = $this->db->get();
         //     return $query->result();
     }
+
+    public function get_detail()
+    {
+        // $this->db->select(
+        //     'transaksi_pemesanan.*,
+        //     tabel_so.no_so no_so2,
+        //     tabel_klien.alamat_klien,
+        //     tabel_so.nip_karyawan,
+        //     nama_klien,
+        //     nama_media,
+        //     disc, 
+        //     kol,
+        //     mmk,
+        //     price,
+        //     gross,
+        //     nett,
+        //     uang_muka,
+        //     sisa_bayar,
+        //     bayar'
+        // );
+        // $this->db->from('transaksi_pemesanan');
+        // $this->db->select("trn_employee.EMPLOYEE_ID,
+        // trn_employee.FIRST_NAME,
+        // trn_employee.LAST_NAME,
+        // trn_employee.EMAIL,
+        // trn_address.ADDRESS_LINE,
+        // trn_address.CITY");
+        // $this->db->join('tabel_klien', 'tabel_klien.id_klien = transaksi_pemesanan.id_klien');
+        // // $this->db->join('tabel_so', 'tabel_so.no_invoice_penj = transaksi_pemesanan.no_invoice_penj');
+        // $this->db->join('tabel_so', 'tabel_so.no_invoice_penj = transaksi_pemesanan.no_invoice_penj');
+        // $this->db->join('tabel_media', 'tabel_media.id_media = transaksi_pemesanan.id_media');
+        // // $this->db->where('tabel_klien.id_klien', $id_klien);
+        // $this->db->group_by("tabel_klien.id_klien");
+        // $this->db->group_by("tabel_klien.id_klien, tabel_so.no_so");
+        // $query = $this->db->get();
+        return $this->db->query(
+            "SELECT a.no_so, d.nama_media, b.mmk,b.kol,b.price,b.gross,b.disc,b.nett,e.nama_klien,
+                    a.no_invoice_penj,a.tgl_invoice_penj,f.jabatan_karyawan,e.alamat_klien
+                FROM transaksi_pemesanan a
+                LEFT JOIN tabel_so b
+                ON a.no_so = b.no_so
+                LEFT JOIN tabel_media d
+                ON a.id_media=d.id_media
+                LEFT JOIN tabel_klien e
+                ON a.id_klien=e.id_klien
+                LEFT JOIN tabel_karyawan f
+                ON a.nip_karyawan=f.nip_karyawan"
+        );
+        // return $query->result();
+    }
+
+
+    // function getEmployees()
+    // {
+    //     $this->db->select("trn_employee.EMPLOYEE_ID,
+    //     trn_employee.FIRST_NAME,
+    //     trn_employee.LAST_NAME,
+    //     trn_employee.EMAIL,
+    //     trn_address.ADDRESS_LINE,
+    //     trn_address.CITY");
+    //     $this->db->from('trn_employee');
+    //     $this->db->join('trn_address',
+    //      'trn_address.employee_id = trn_employee.employee_id');
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
 }

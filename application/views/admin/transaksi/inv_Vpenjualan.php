@@ -1,116 +1,112 @@
-<?php
-//============================================================+
-// File name   : example_005.php
-// Begin       : 2008-03-04
-// Last Update : 2013-05-14
-//
-// Description : Example 005 for TCPDF class
-//               Multicell
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
+<!-- akan menjadi template  -->
+<!DOCTYPE html>
+<html lang="en">
 
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Multicell
- * @author Nicola Asuni
- * @since 2008-03-04
- */
+<head>
+    <!-- INI DALAH FILE CSS YANG DI BUAT DATATABLES BOOSTRAP -->
+    <link type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> <!-- INI CSS BOOSTRAP 4-->
+    <link type="text/css" src="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> <!-- INI DATA TABLES BOOSTRAP 4-->
+    <?php $this->load->view("admin/_partials/head.php") ?>
+</head>
 
-// Include the main TCPDF library (search for installation path).
-// require_once('tcpdf_include.php'); // ini dihilangkan karna fungsi include di script inv_Vpenjualan karena sudah disisipkan library
+<body id="page-top">
 
-// create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-// set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 005');
-$pdf->SetSubject('TCPDF Tutorial');
-$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-
-// set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 005', PDF_HEADER_STRING);
-
-// set header and footer fonts
-$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-// set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
-// set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-// set some language-dependent strings (optional)
-if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-    require_once(dirname(__FILE__) . '/lang/eng.php');
-    $pdf->setLanguageArray($l);
-}
-
-// ---------------------------------------------------------
-
-// set font
-$pdf->SetFont('times', '', 10);
-
-// add a page
-$pdf->AddPage();
-
-// set cell padding
-$pdf->setCellPaddings(1, 1, 1, 1);
-
-// set cell margins
-$pdf->setCellMargins(1, 1, 1, 1);
-
-// set color for background
-$pdf->SetFillColor(255, 255, 127);
-
-// MultiCell($w, $h, $txt, $border=0, $align='J', $fill=0, $ln=1, $x='', $y='', $reseth=true, $stretch=0, $ishtml=false, $autopadding=true, $maxh=0)
+    <?php $this->load->view("admin/_partials/navbar.php") ?>
 
 
-$title = <<<EOD
-<h3>Invoice Pemesanan</h3>
-EOD;
-$pdf->WriteHTMLCell(0, 0, '', '', $title, 0, 1, 0, true, 'C', true);
-$table = '<table style="border:1px solid #000000; padding:6px;">';
-$table .=
-    '<tr>
-            <th  style="border:1px solid #000000;"> No.So </th>
-            <th  style="border:1px solid #000000;" width="180"> Nama Media </th>
-            <th  style="border:1px solid #000000;" width="50"> mmk  </th>
-            <th  style="border:1px solid #000000;" width="50"> kol  </th>
-            <th  style="border:1px solid #000000;"> Price </th>
-            <th  style="border:1px solid #000000;"> Gross </th>
-            <th  style="border:1px solid #000000;" width="30"> % </th>
-            <th  style="border:1px solid #000000;"> Nett </th>
-    </tr>';
-$table .= '</table>';
-$pdf->WriteHTMLCell(0, 0, '', '', $table, 0, 1, 0, true, 'C', true);
-// move pointer to last page
-$pdf->lastPage();
+    <div id="wrapper">
+        <?php $this->load->view("admin/_partials/sidebar.php") ?>
+        <div id="content-wrapper">
+            <div class="container-fluid">
+                <div id="content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- TAMBAHKAN ROW-->
+                            <div class="col-sm-12">
+                                <!-- TAMBAHKAN COLOM -->
+                                <br>
+                                <div class="card">
+                                    <div class="card header">
+                                        <!-- HEADER TABLE -->
+                                        <h4 align="center"><strong>invoice</strong></h4>
+                                    </div>
 
-// ---------------------------------------------------------
+                                    <div class="card-body">
+                                        <a class="btn btn-primary btn-sm" href="<?php echo base_url('transreport/print_lap_penj') ?>"> print </a>
+                                        <!-- <form method="post" id="form1" action="<?php ?>">
+                                            <div class="form-body">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1"> Tanggal</label>
+                                                    <input name="tgl-awal" type="date" style="width:auto;">
+                                                    <label>s/d</label>
+                                                    <input name="tgl-akhir" type="date" style="width:auto;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-1"> </label>
+                                                    <button class="bn btn-primary" type="submit" type="button"> <i class=glyphicon glyphicon-refresh></i> View Date Laporan </button>
+                                                </div>
+                                            </div>
+                                        </form> -->
+                                        <table class="table table-striped table-bordered" id="search-lap">
+                                            <thead>
+                                                <tr align="center">
+                                                    <th> No.invoice </th>
+                                                    <th> Tanggal </th>
+                                                    <th> Dipesan Oleh </th>
+                                                    <th> Total Nett </th>
+                                                    <!-- <th> Marketing </th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 1 ?>
+                                                <?php foreach ($inv_penjualan as $tampil) { ?>
 
-//Close and output PDF document
-ob_clean(); // untuk menghapus output buffer
-$pdf->Output('report-inv.pdf', 'I');
+                                                    <tr>
+                                                        <td> <?php echo $tampil->no_invoice_penj ?></td>
+                                                        <td> <?php echo $tampil->tgl_invoice_penj ?></td>
+                                                        <td> <?php echo $tampil->nama_klien ?></td>
+                                                        <td> <?php $this->load->helper('rupiah_helper');
+                                                                echo rupiah($tampil->nett) ?>
+                                                        </td>
+                                                        <!-- <td> <?php // echo $tampil->user 
+                                                                    ?></td> -->
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
-//============================================================+
-// END OF FILE
-//============================================================+
+
+                            </div> <!-- AKHIR COLOM -->
+                        </div> <!-- AKHIR ROW -->
+                    </div> <!-- AKHIR CONTAINER -->
+                    <!-- /.container-fluid -->
+
+
+
+                    <!-- Sticky Footer -->
+                    <?php $this->load->view("admin/_partials/footer.php") ?>
+
+                </div>
+                <!-- /.content-wrapper -->
+
+            </div>
+            <!-- /#wrapper -->
+            <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+            <?php $this->load->view("admin/_partials/modal.php") ?>
+            <?php $this->load->view("admin/_partials/js.php") ?>
+
+</body>
+
+<footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- INI ADALAH JQUERY-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> <!-- INI ADALAH JQUERY DATATABLES-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> <!-- INI ADALAH SCRIPT DATATABLES BOOSTRAP-->
+</footer>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#search-lap').DataTable(); // gunanya untuk mencari data tabel yang ada pada modal
+    });
+</script>

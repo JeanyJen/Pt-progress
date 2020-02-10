@@ -13,10 +13,7 @@ class Penjualan_model extends CI_Model
     public function get_penjualan()
     {
         $this->db->select(
-            'transaksi_pemesanan.no_invoice_penj,
-            transaksi_pemesanan.tgl_invoice_penj,
-            transaksi_pemesanan.uang_muka,
-            transaksi_pemesanan.sisa_bayar,
+            'transaksi_pemesanan.*,
             tabel_klien.id_klien, 
             tabel_klien.nama_klien,
             sum(nett) nett'
@@ -25,12 +22,7 @@ class Penjualan_model extends CI_Model
         $this->db->join('tabel_klien', 'tabel_klien.id_klien = transaksi_pemesanan.id_klien');
         $this->db->join('tabel_so', 'tabel_so.no_invoice_penj = transaksi_pemesanan.no_invoice_penj');
         $this->db->join('tabel_media', 'tabel_media.id_media = transaksi_pemesanan.id_media');
-        $this->db->group_by("transaksi_pemesanan.no_invoice_penj,
-                            transaksi_pemesanan.tgl_invoice_penj,
-                            transaksi_pemesanan.uang_muka,
-                            transaksi_pemesanan.sisa_bayar,
-                            tabel_klien.id_klien, 
-                            tabel_klien.nama_klien");
+        $this->db->group_by("tabel_klien.id_klien");
         $query = $this->db->get();
         return $query->result();
     }

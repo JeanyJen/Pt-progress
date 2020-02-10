@@ -1,3 +1,5 @@
+// ga dipake //
+
 <?php
 class Lap_Penjualan extends CI_Controller
 {
@@ -29,7 +31,7 @@ class Lap_Penjualan extends CI_Controller
 
 
 
-
+// ga dipake //
 
 
 

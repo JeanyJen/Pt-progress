@@ -12,11 +12,13 @@ class Media extends CI_Controller
 
 	public function index()
 	{
-	    //BUAT SEBUAH ARRAY tabel_media dari method ambil_data yang ada di model Media_model
+		//BUAT SEBUAH ARRAY tabel_media dari method ambil_data yang ada di model Media_model
 		$data['tabel_media'] = $this->Media_model->ambil_data();
 		//MENAMPILKAN VIEW media_view untuk menampilkan data dari database ke sebuah table
 		$this->load->view('admin/file/media_view', $data); //jangan lupa kirim variabel data tadi ke media_view
 	}
+
+
 
 
 	public function terserah()

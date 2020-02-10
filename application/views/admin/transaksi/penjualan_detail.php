@@ -18,6 +18,9 @@
             overflow: auto;
         }
     </style>
+    <!-- SET GLOBAL BASE URL -->
+    <script>var base_url = '<?php echo base_url() ?>';</script>
+
 </head>
 
 <body id="page-top">
@@ -29,143 +32,161 @@
             <div class="container-fluid">
                 <div id="content-wrapper">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="penjualan" class="col-sm-3 col-form-label"> No.Inv </label>
-                                            <div class="col-sm-6">
-                                                <input size="30" value="<?php echo $detail[0]->no_invoice_penj ?>" readonly>
+                        <form action="<?php echo site_url('admin/transaksi/penjualan/updateSisaBayar') ?>" method="POST" id="update_penjualan">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="penjualan" class="col-sm-3 col-form-label"> No.Inv </label>
+                                                <div class="col-sm-6">
+                                                    <input size="30" value="<?php echo $detail[0]->no_invoice_penj ?>" readonly>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="penjualan" class="col-sm-3 col-form-label"> Di pesan oleh </label>
-                                            <div class="col-sm-6">
-                                                <input size="30" value="<?php echo $detail[0]->nama_klien ?>" readonly>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="penjualan" class="col-sm-3 col-form-label"> Di pesan oleh </label>
+                                                <div class="col-sm-6">
+                                                    <input size="30" value="<?php echo $detail[0]->nama_klien ?>" readonly>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="penjualan" class="col-sm-3 col-form-label">Alamat</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="alamat-klien" value="<?php echo $detail[0]->alamat_klien ?>" readonly>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="penjualan" class="col-sm-3 col-form-label">Alamat</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="alamat-klien" value="<?php echo $detail[0]->alamat_klien ?>" readonly>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
-                                            <label for="penjualan" class="col-sm-4 col-form-label">Tgl.Inv</label>
-                                            <div class="col-sm-6">
-                                                <input size="30" value="<?php echo $detail[0]->tgl_invoice_penj ?>" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
-                                            <!-- <label for="penjualan" class="col-sm-5 col-form-label"> Tanggal Inv</label>
-                                                        <div class="col-sm-7">
-                                                            <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                                        </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
-                                            <label for="penjualan" class="col-sm-5 col-form-label">Marketing</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control" value="<?php echo $detail[0]->nip_karyawan ?>" readonly>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group row">
+                                                <label for="penjualan" class="col-sm-4 col-form-label">Tgl.Inv</label>
+                                                <div class="col-sm-6">
+                                                    <input size="30" value="<?php echo $detail[0]->tgl_invoice_penj ?>" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group row">
+                                                <!-- <label for="penjualan" class="col-sm-5 col-form-label"> Tanggal Inv</label>
+                                                            <div class="col-sm-7">
+                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                            </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group row">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group row">
+                                                <label for="penjualan" class="col-sm-5 col-form-label">Marketing</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" value="<?php echo $detail[0]->nip_karyawan ?>" readonly>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr align="center">
-                                    <!-- <th rowspan="2" class="align-middle"> No.Inv </th> -->
-                                    <th rowspan="2" class="align-middle"> No.So </th>
-                                    <th rowspan="2" class="align-middle"> Nama Media </th>
-                                    <th colspan="2"> Size </th>
-                                    <th rowspan="2" class="align-middle"> Price </th>
-                                    <th rowspan="2" class="align-middle"> Gross </th>
-                                    <th rowspan="2" width="1"> % </th>
-                                    <th rowspan="2" class="align-middle"> Nett </th>
-                                    <!-- <th rowspan="2" class="align-middle" width="100"> Action </th> -->
-                                </tr>
-                                <tr>
-                                    <th> Mmk </th>
-                                    <th> Kol </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $grandtotal = 0; ?>
-                                <?php foreach ($detail as $tampil) : ?>
-                                    <?php $grandtotal = $grandtotal + $tampil->nett ?>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr align="center">
+                                        <!-- <th rowspan="2" class="align-middle"> No.Inv </th> -->
+                                        <th rowspan="2" class="align-middle"> No.So </th>
+                                        <th rowspan="2" class="align-middle"> Nama Media </th>
+                                        <th colspan="2"> Size </th>
+                                        <th rowspan="2" class="align-middle"> Price </th>
+                                        <th rowspan="2" class="align-middle"> Gross </th>
+                                        <th rowspan="2" width="1"> % </th>
+                                        <th rowspan="2" class="align-middle"> Nett </th>
+                                        <!-- <th rowspan="2" class="align-middle" width="100"> Action </th> -->
+                                    </tr>
                                     <tr>
-                                        <!-- <td> <?php //echo $tampil->no_invoice_penj 
-                                                    ?></td> -->
-                                        <td> <?php echo $tampil->no_so2 ?></td>
-                                        <td> <?php echo $tampil->nama_media ?></td>
-                                        <td> <?php echo $tampil->mmk ?></td>
-                                        <td> <?php echo $tampil->kol ?></td>
-                                        <td> <?php $this->load->helper('rupiah_helper');
-                                                echo rupiah($tampil->price) ?>
-                                        </td>
-                                        <td> <?php $this->load->helper('rupiah_helper');
-                                                echo rupiah($tampil->gross) ?>
-                                        </td>
-                                        <td> <?php $this->load->helper('diskon_helper');
-                                                echo diskon($tampil->disc) ?>
-                                        </td>
-                                        <td> <?php $this->load->helper('rupiah_helper');
-                                                echo rupiah($tampil->nett) ?>
+                                        <th> Mmk </th>
+                                        <th> Kol </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $grandtotal = 0; ?>
+                                    <?php foreach ($detail as $tampil) : ?>
+                                        <?php $grandtotal = $grandtotal + $tampil->nett ?>
+                                        <tr>
+                                            <!-- <td> <?php //echo $tampil->no_invoice_penj 
+                                                        ?></td> -->
+                                            <td> <?php echo $tampil->no_so2 ?></td>
+                                            <td> <?php echo $tampil->nama_media ?></td>
+                                            <td> <?php echo $tampil->mmk ?></td>
+                                            <td> <?php echo $tampil->kol ?></td>
+                                            <td> <?php $this->load->helper('rupiah_helper');
+                                                    echo rupiah($tampil->price) ?>
+                                            </td>
+                                            <td> <?php $this->load->helper('rupiah_helper');
+                                                    echo rupiah($tampil->gross) ?>
+                                            </td>
+                                            <td> <?php $this->load->helper('diskon_helper');
+                                                    echo diskon($tampil->disc) ?>
+                                            </td>
+                                            <td> <?php $this->load->helper('rupiah_helper');
+                                                    echo rupiah($tampil->nett) ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7" class="table-secondary"> Total </td>
+                                        <td class="table-secondary">
+                                            <?php $this->load->helper('rupiah_helper');
+                                            echo rupiah($grandtotal)   ?>
                                         </td>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="7" class="table-secondary"> Total </td>
-                                    <td class="table-secondary">
-                                        <?php $this->load->helper('rupiah_helper');
-                                        echo rupiah($grandtotal)   ?>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                        <div class="row">
-                            <div class="col-sm-3"> </div>
-                            <div class="col-sm-3"> </div>
-                            <div class="col-sm-3">
-                                <div class="row">
-                                    <div class="col-sm-7">
+                                </tfoot>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-3"> </div>
+                                <div class="col-sm-3"> </div>
+                                <div class="col-sm-3">
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group row">
+                                        <!-- <label for="penjualan" class="col-sm-5 col-form-label "> Metode Pembayaran </label> -->
+                                        <div class="col-sm-7">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                <div class="form-group row">
-                                    <!-- <label for="penjualan" class="col-sm-5 col-form-label "> Metode Pembayaran </label> -->
-                                    <div class="col-sm-7">
+                            <div class="row">
+                                <div class="col-sm-3"> </div>
+                                <div class="col-sm-3"> </div>
+                                <div class="col-sm-3"> </div>
+                                <div class="col-sm-3">
+
+                                    <div class="form-group row">
+                                        <label for="penjualan" class="col-sm-5 col-form-label">Uang Muka</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" value="<?php $this->load->helper('rupiah_helper');
+                                                                        echo rupiah($tampil->uang_muka) ?>" class="form-control method-pembayaran" readonly>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -174,60 +195,43 @@
                             <div class="col-sm-3"> </div>
                             <div class="col-sm-3"> </div>
                             <div class="col-sm-3"> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"> </div>
+                            <div class="col-sm-3"> </div>
                             <div class="col-sm-3">
-
+                            </div>
+                            <div class="col-sm-3">
                                 <div class="form-group row">
-                                    <label for="penjualan" class="col-sm-5 col-form-label">Uang Muka</label>
+                                    <label for="penjualan" class="col-sm-5 col-form-label">Sisa Bayar</label>
                                     <div class="col-sm-7">
                                         <input type="text" value="<?php $this->load->helper('rupiah_helper');
-                                                                    echo rupiah($tampil->uang_muka) ?>" class="form-control method-pembayaran" readonly>
+                                                                    echo rupiah($tampil->sisa_bayar) ?>" class="form-control" name="sisa_bayar" readonly>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3"> </div>
-                        <div class="col-sm-3"> </div>
-                        <div class="col-sm-3"> </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3"> </div>
-                        <div class="col-sm-3"> </div>
-                        <div class="col-sm-3">
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group row">
-                                <label for="penjualan" class="col-sm-5 col-form-label">Sisa Bayar</label>
-                                <div class="col-sm-7">
-                                    <input type="text" value="<?php $this->load->helper('rupiah_helper');
-                                                                echo rupiah($tampil->sisa_bayar) ?>" class="form-control" name="sisa_bayar" readonly>
+                        <div class="row">
+                            <div class="col-sm-3"> </div>
+                            <div class="col-sm-3"> </div>
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group row">
+                                    <label for="penjualan" class="col-sm-5 col-form-label"> Bayar</label>
+                                    <div class="col-sm-7">
+                                        <input type="hidden" name="no_invoice_penj" value="<?php echo $detail[0]->no_invoice_penj ?>" id="no_invoice_penj">
+                                        <input type="hidden" value="<?php echo $tampil->sisa_bayar ?>"  name="sisa_bayar2" id="sisa_bayar2">
+                                        <input type="text" id="input_bayar" name="input_bayar" class="form-control" value="<?php $this->load->helper('rupiah_helper');
+                                            echo rupiah($tampil->bayar) ?>" placeholder="masukkan pembayaran">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3"> </div>
-                        <div class="col-sm-3"> </div>
-                        <div class="col-sm-3">
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group row">
-                                <label for="penjualan" class="col-sm-5 col-form-label"> Bayar</label>
-                                <div class="col-sm-7">
-                                    <input type="hidden" name="no_invoice_penj">
-                                    <input type="text" name="input_bayar" class="form-control" value="<?php $this->load->helper('rupiah_helper');
-                                                                                                        echo rupiah($tampil->bayar) ?>" placeholder="masukkan pembayaran">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <input class="btn btn-primary" type="button" value="Edit">
-                    <input class="btn btn-primary" type="submit" value="pelunasan" id="lunas">
-                    <input class="btn btn-primary" type="submit" value="Kembali">
-
-
+                        <input class="btn btn-primary" type="submit" value="Simpan">
+                        <a class="btn btn-secondary" href="<?php echo site_url('admin/transaksi/penjualan') ?>">Batal</a>
+                        <input class="btn btn-primary" type="button" value="Pelunasan" id="lunas">
+                    </form>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -286,7 +290,24 @@
 
                 }
             });
-        })
+        });
+
+        $("#lunas").click(function()
+        {       
+            $.ajax({
+                type: "POST",
+                url: base_url + "admin/transaksi/penjualan/updateLunas", 
+                data: {sisa_bayar2: $("#sisa_bayar2").val(),
+                       no_invoice_penj: $("#no_invoice_penj").val()},
+                dataType: "text",  
+                cache:false,
+                success: 
+                function(data){
+                    window.location.href = base_url + "admin/transaksi/penjualan";  
+                }
+            });// you have missed this bracket
+            return false;
+        });
     </script>
 </footer>
 
